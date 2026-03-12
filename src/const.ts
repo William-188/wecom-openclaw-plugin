@@ -87,3 +87,16 @@ export const PENDING_QUEUE_MAX_SIZE = 100;
 
 /** 待发送消息的过期时间（毫秒），超过此时间的消息将被丢弃 */
 export const PENDING_MESSAGE_TTL_MS = 60_000;
+
+// ============================================================================
+// MCP 配置相关
+// ============================================================================
+
+/** 获取 MCP 配置的 WebSocket 命令 */
+export const MCP_GET_CONFIG_CMD = "aibot_get_mcp_config";
+
+/** MCP 配置拉取超时时间（毫秒） */
+export const MCP_CONFIG_FETCH_TIMEOUT_MS = 15_000;
+
+/** 插件配置文件名 */
+export const PLUGIN_JSON_FILENAME = "openclaw.plugin.json";

@@ -54,6 +54,7 @@ import {
 } from "./state-manager.js";
 import { PENDING_MESSAGE_TTL_MS } from "./const.js";
 import { withTimeout } from "./timeout.js";
+import { fetchAndSaveMcpConfig } from "./mcp-config.js";
 
 // ============================================================================
 // 重新导出（保持向后兼容）
@@ -559,6 +560,9 @@ export async function monitorWeComProvider(options: WeComMonitorOptions): Promis
       }).catch((err) => {
         runtime.error?.(`[${account.accountId}] Failed to process pending queue: ${String(err)}`);
       });
+
+      // 认证成功后自动拉取 MCP 配置（异步，失败不影响主流程）
+      fetchAndSaveMcpConfig(wsClient, account.accountId, runtime);
     });
 
     // 监听断开事件

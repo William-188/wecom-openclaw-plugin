@@ -162,3 +162,19 @@ export interface WeComResponseMessage extends WeComRequest {
     };
   };
 }
+
+// ============================================================================
+// MCP 配置类型
+// ============================================================================
+
+/**
+ * MCP 配置响应体
+ */
+export interface McpConfigBody {
+  /** MCP Server 的 StreamableHttp URL */
+  url: string;
+  /** 连接类型，如 "streamable-http" */
+  type?: string;
+  /** 是否已授权 */
+  is_authed?: boolean;
+}
