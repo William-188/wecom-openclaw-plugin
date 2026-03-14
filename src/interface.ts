@@ -31,6 +31,16 @@ export interface MessageState {
   accumulatedText: string;
   /** 流式回复的 streamId，用于保持同一个流式回复使用相同的 streamId */
   streamId?: string;
+  /** 是否有用户可见的文本内容（不包括 🤔....AppendText 标签） */
+  hasText?: boolean;
+  /** 是否已成功发送过媒体文件 */
+  hasMedia?: boolean;
+  /** 是否有媒体发送失败（权限不足、文件过大等） */
+  hasMediaFailed?: boolean;
+  /** 媒体发送失败时的纯文本错误摘要（用于替换 thinking 流展示给用户） */
+  mediaErrorSummary?: string;
+  /** deliver 回调是否被调用过（用于区分"核心无回复"和"核心回复了空内容"） */
+  deliverCalled?: boolean;
 }
 
 // ============================================================================

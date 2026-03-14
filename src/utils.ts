@@ -42,6 +42,8 @@ export interface WeComAccountConfig {
   groups?: Record<string, WeComGroupConfig>;
   /** 是否发送"思考中"消息，默认为 true */
   sendThinkingMessage?: boolean;
+  /** 额外允许访问的本地媒体路径白名单（支持 ~ 表示 home 目录），如 ["~/Downloads", "~/Documents"] */
+  mediaLocalRoots?: string[];
 }
 
 /**

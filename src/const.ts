@@ -100,3 +100,25 @@ export const MCP_CONFIG_FETCH_TIMEOUT_MS = 15_000;
 
 /** 插件配置文件名 */
 export const PLUGIN_JSON_FILENAME = "openclaw.plugin.json";
+
+// ============================================================================
+// 媒体文件大小限制
+// ============================================================================
+
+/** 图片大小上限（字节）：10MB */
+export const IMAGE_MAX_BYTES = 10 * 1024 * 1024;
+
+/** 视频大小上限（字节）：10MB */
+export const VIDEO_MAX_BYTES = 10 * 1024 * 1024;
+
+/** 语音大小上限（字节）：2MB */
+export const VOICE_MAX_BYTES = 2 * 1024 * 1024;
+
+/** 文件大小上限（字节）：20MB */
+export const FILE_MAX_BYTES = 20 * 1024 * 1024;
+
+/** 文件绝对上限（字节）：超过此值无法发送，等于 FILE_MAX_BYTES */
+export const ABSOLUTE_MAX_BYTES = FILE_MAX_BYTES;
+
+/** 上传分片大小（字节，Base64 编码前）：512KB */
+export const UPLOAD_CHUNK_SIZE = 512 * 1024;
