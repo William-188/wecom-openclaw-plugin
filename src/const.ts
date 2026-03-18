@@ -60,6 +60,9 @@ export const MESSAGE_STATE_MAX_SIZE = 500;
 // 消息模板
 // ============================================================================
 
+/** "收到"即时回复消息 */
+export const RECEIVED_MESSAGE = "收到，我看看";
+
 /** "思考中"流式消息占位内容 */
 export const THINKING_MESSAGE = "<think></think>";
 

@@ -24,6 +24,7 @@ import type { ResolvedWeComAccount } from "./utils.js";
 import {
   CHANNEL_ID,
   THINKING_MESSAGE,
+  RECEIVED_MESSAGE,
   MEDIA_IMAGE_PLACEHOLDER,
   MEDIA_DOCUMENT_PLACEHOLDER,
   MESSAGE_PROCESS_TIMEOUT_MS,
@@ -375,6 +376,20 @@ async function processWeComMessage(params: {
   const cleanupState = () => {
     deleteMessageState(messageId);
   };
+
+  // Step 5.5: 发送"收到"即时回复（用户等待反馈）
+  try {
+    await sendWeComReply({
+      wsClient,
+      frame,
+      text: RECEIVED_MESSAGE,
+      runtime,
+      finish: true,
+      accountId: account.accountId,
+    });
+  } catch (err) {
+    runtime.error?.(`[WeCom] Failed to send received message: ${String(err)}`);
+  }
 
   // Step 6: 发送"思考中"消息
   const shouldSendThinking = account.sendThinkingMessage ?? true;
